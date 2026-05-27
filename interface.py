@@ -1,5 +1,5 @@
 import pygame
-from config import PRETO, CINZA_CLARO, VERMELHO, VERDE
+from config import PRETO, CINZA_CLARO, AUMENTAR, DIMINUIR
 
 
 pygame.font.init()
