@@ -1,11 +1,12 @@
 import pygame
+from config import PRETO, CINZA_CLARO, AUMENTAR, DIMINUIR
 
 from config import *
 
 pygame.font.init()
 
 fonte = pygame.font.SysFont("Arial", 24)
-fonte_titulo = pygame.font.SysFont("Arial", 30, bold=True)
+fonte_botao = pygame.font.SysFont("Arial", 18, bold=True)
 
 
 def texto(tela, mensagem, x, y, cor=PRETO):
@@ -30,29 +31,23 @@ def titulo(tela, mensagem, x, y):
     tela.blit(superficie, (x, y))
 
 
-def botao(
-        tela,
-        rect,
-        cor,
-        texto_botao):
+class Botao:
+    def __init__(self, x, y, largura, altura, texto, cor_fundo, cor_texto):
+        self.rect = pygame.Rect(x, y, largura, altura)
+        self.texto = texto
+        self.cor_fundo = cor_fundo
+        self.cor_texto = cor_texto
+        self.clicado = False
 
-    pygame.draw.rect(
-        tela,
-        cor,
-        rect,
-        border_radius=10
-    )
+    def desenhar(self, tela):
+        # Desenha o botão
+        pygame.draw.rect(tela, self.cor_fundo, self.rect)
+        pygame.draw.rect(tela, PRETO, self.rect, 2)  # Borda
 
-    txt = fonte.render(
-        texto_botao,
-        True,
-        BRANCO
-    )
+        # Desenha o texto
+        superficie = fonte_botao.render(self.texto, True, self.cor_texto)
+        texto_rect = superficie.get_rect(center=self.rect.center)
+        tela.blit(superficie, texto_rect)
 
-    tela.blit(
-        txt,
-        (
-            rect.x + 20,
-            rect.y + 10
-        )
-    )
+    def clique_em_cima(self, pos):
+        return self.rect.collidepoint(pos)

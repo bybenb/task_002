@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <!-- Meta Tags de Codificação e Viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Canonical URL para SEO -->
+    <link rel="canonical" href="https://cg.unitic.site">
+
+    <!-- Meta Tags de SEO -->
+    <title>Simulador de Espessura de Linhas | Visualização Gráfica</title>
+    <meta name="description" content="Simulador de espessura de linhas usando múltiplas linhas paralelas. Explore como a espessura de linhas é criada através de técnicas de computação gráfica. Versão web mobile-first e responsiva.">
+    <meta name="keywords" content="computação gráfica, espessura linhas, simulador, gráficos, web, mobile">
+    <meta name="author" content="UNITIC - Departamento de TI">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="pt-PT">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cg.unitic.site">
+    <meta property="og:title" content="Simulador de Espessura de Linhas">
+    <meta property="og:description" content="Visualize como múltiplas linhas paralelas simulam espessura em gráficos computacionais.">
+    <meta property="og:image" content="https://cg.unitic.site/og-image.png">
+    <meta property="og:locale" content="pt_PT">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://cg.unitic.site">
+    <meta property="twitter:title" content="Simulador de Espessura de Linhas">
+    <meta property="twitter:description" content="Explore técnicas de computação gráfica para renderização de linhas.">
+    <meta property="twitter:image" content="https://cg.unitic.site/og-image.png">
+
+    <!-- Tema e Segurança -->
+    <meta name="theme-color" content="#192d64">
+    <meta name="color-scheme" content="light dark">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+
+    <!-- Alternativas de Linguagem -->
+    <link rel="alternate" hreflang="pt-PT" href="https://cg.unitic.site">
+    <link rel="alternate" hreflang="pt-BR" href="https://cg.unitic.site/pt-br">
+    <link rel="alternate" hreflang="en" href="https://cg.unitic.site/en">
+
+    <!-- Links de Recursos -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23ff8c00' width='100' height='100'/><line x1='20' y1='50' x2='80' y2='50' stroke='white' stroke-width='3'/></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23ff8c00' width='180' height='180'/><line x1='30' y1='90' x2='150' y2='90' stroke='white' stroke-width='5'/></svg>">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Preconexão a recursos externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Simulador de Espessura de Linhas",
+        "description": "Simulador de espessura de linhas usando múltiplas linhas paralelas em computação gráfica",
+        "url": "https://cg.unitic.site",
+        "applicationCategory": "Educational",
+        "operatingSystem": "Web",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "EUR"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "UNITIC",
+            "url": "https://www.unitic.site"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulador de Espessura de Linhas</h1>
+            <p class="subtitle">Visualize como múltiplas linhas paralelas simulam espessura</p>
+        </header>
+
+        <main>
+            <!-- Canvas para desenho -->
+            <div class="canvas-wrapper">
+                <canvas id="canvas" aria-label="Área de visualização do simulador de linhas"></canvas>
+            </div>
+
+            <!-- Informações -->
+            <section class="info-section" aria-label="Informações de espessura atual">
+                <div class="info-card">
+                    <span class="label">Espessura Atual:</span>
+                    <span class="value" id="espessura-valor">1</span>
+                </div>
+            </section>
+
+            <!-- Controles -->
+            <section class="controls" aria-label="Controles de ajuste de espessura">
+                <button class="btn btn-decrease" id="btn-diminuir" aria-label="Diminuir espessura da linha">
+                    <span class="icon">−</span>
+                    <span class="text">Diminuir</span>
+                </button>
+
+                <input type="range" id="slider-espessura" min="1" max="50" value="1" class="slider" aria-label="Controle deslizante para ajuste fino da espessura">
+
+                <button class="btn btn-increase" id="btn-aumentar" aria-label="Aumentar espessura da linha">
+                    <span class="icon">+</span>
+                    <span class="text">Aumentar</span>
+                </button>
+            </section>
+
+            <!-- Instruções -->
+            <section class="instructions" aria-label="Instruções de uso">
+                <h2>Como Usar</h2>
+                <ul>
+                    <li>Use os botões <strong>+ / −</strong> para controlar a espessura</li>
+                    <li>Use o <strong>controle deslizante</strong> para ajuste fino</li>
+                    <li>Observe como a linha grossa é composta por múltiplas linhas paralelas</li>
+                    <li>Use as <strong>setas do teclado</strong> para controle alternativo</li>
+                </ul>
+            </section>
+
+            <!-- Botão Reset -->
+            <button class="btn btn-reset" id="btn-reset" aria-label="Resetar simulador para valores iniciais">
+                Resetar
+            </button>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 UNITIC - Departamento de Tecnologia da Informação</p>
+            <p>Projeto de Visualização Gráfica - Simulador de Espessura de Linhas com Múltiplas Linhas Paralelas</p>
+        </footer>
+    </div>
+
+    <!-- Script principal -->
+    <script src="script.js" defer></script>
+
+    <!-- Analytics (opcional) -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script> -->
+</body>
+</html>

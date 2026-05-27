@@ -15,20 +15,12 @@ pygame.display.set_caption(TITULO)
 
 clock = pygame.time.Clock()
 
-# Configurações iniciais
+# Espessura inicial
+espessura = 1
 
-espessura = 5
-cor_atual = AZUL
-
-desenhando = False
-ponto_inicial = None
-ponto_final = None
-
-# Botões
-
-botao_azul = pygame.Rect(40, 150, 200, 50)
-botao_vermelho = pygame.Rect(40, 220, 200, 50)
-botao_verde = pygame.Rect(40, 290, 200, 50)
+# Criar botões com identidade visual unificada
+botao_aumentar = Botao(100, 550, 120, 50, "Aumentar", AUMENTAR, BRANCO)
+botao_diminuir = Botao(250, 550, 120, 50, "Diminuir", DIMINUIR, BRANCO)
 
 while True:
 
@@ -87,6 +79,16 @@ while True:
 
                 if espessura > 1:
                     espessura -= 1
+
+        # Mouse - Clique nos botões
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            if evento.button == 1:  # Botão esquerdo do mouse
+                if botao_aumentar.clique_em_cima(evento.pos):
+                    espessura += 1
+
+                elif botao_diminuir.clique_em_cima(evento.pos):
+                    if espessura > 1:
+                        espessura -= 1
 
     # Fundo
 
@@ -155,37 +157,30 @@ while True:
         490
     )
 
-    texto(
-        tela,
-        "Desenhe com o rato",
-        40,
-        560
-    )
+    # desenhar_texto(
+    #     tela,
+    #     "SETA CIMA = aumentar",
+    #     650,
+    #     50
+    # )
 
-    # Área de desenho
+    # desenhar_texto(
+    #     tela,
+    #     "SETA BAIXO = diminuir",
+    #     650,
+    #     90
+    # )
 
-    pygame.draw.rect(
-        tela,
-        BRANCO,
-        (
-            LARGURA_MENU,
-            0,
-            LARGURA - LARGURA_MENU,
-            ALTURA
-        )
-    )
+    # desenhar_texto(
+    #     tela,
+    #     "ou clique nos botões abaixo:",
+    #     650,
+    #     130
+    # )
 
-    # Linha desenhada
-
-    if ponto_inicial and ponto_final:
-
-        desenhar_linha_grossa(
-            tela,
-            cor_atual,
-            ponto_inicial,
-            ponto_final,
-            espessura
-        )
+    # Desenhar botões
+    botao_aumentar.desenhar(tela)
+    botao_diminuir.desenhar(tela)
 
     pygame.display.update()
 
