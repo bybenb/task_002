@@ -13,5 +13,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: web          # ← Mude para o nome da sua pasta
+          folder: web            
           branch: gh-pages
