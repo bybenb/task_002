@@ -19,9 +19,9 @@ clock = pygame.time.Clock()
 # Espessura inicial
 espessura = 1
 
-# Criar botões
-botao_aumentar = Botao(100, 550, 120, 50, "➕ Aumentar", VERDE, PRETO)
-botao_diminuir = Botao(250, 550, 120, 50, "➖ Diminuir", VERMELHO, PRETO)
+# Criar botões com identidade visual unificada
+botao_aumentar = Botao(100, 550, 120, 50, "➕ Aumentar", AUMENTAR, BRANCO)
+botao_diminuir = Botao(250, 550, 120, 50, "➖ Diminuir", DIMINUIR, BRANCO)
 
 while True:
 
