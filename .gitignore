@@ -1,0 +1,6 @@
+*.pyc
+
+pycache
+
+
+pip install pygame
