@@ -7,6 +7,7 @@ from interface import *
 
 pygame.init()
 
+# Janela
 tela = pygame.display.set_mode(
     (LARGURA, ALTURA)
 )
@@ -25,56 +26,20 @@ botao_diminuir = Botao(250, 550, 120, 50, "Diminuir", DIMINUIR, BRANCO)
 while True:
 
     # Eventos
-
     for evento in pygame.event.get():
 
         if evento.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
 
-        # Clique do rato
-
-        if evento.type == pygame.MOUSEBUTTONDOWN:
-
-            mouse = pygame.mouse.get_pos()
-
-            # Escolher cor
-
-            if botao_azul.collidepoint(mouse):
-                cor_atual = AZUL
-
-            elif botao_vermelho.collidepoint(mouse):
-                cor_atual = VERMELHO
-
-            elif botao_verde.collidepoint(mouse):
-                cor_atual = VERDE
-
-            else:
-                desenhando = True
-                ponto_inicial = mouse
-
-        if evento.type == pygame.MOUSEBUTTONUP:
-
-            desenhando = False
-
-        # Movimento do rato
-
-        if evento.type == pygame.MOUSEMOTION:
-
-            if desenhando:
-                ponto_final = pygame.mouse.get_pos()
-
         # Teclado
-
         if evento.type == pygame.KEYDOWN:
 
-            # aumentar espessura
-
+            # Aumentar espessura
             if evento.key == pygame.K_UP:
                 espessura += 1
 
-            # diminuir espessura
-
+            # Diminuir espessura
             if evento.key == pygame.K_DOWN:
 
                 if espessura > 1:
@@ -91,70 +56,39 @@ while True:
                         espessura -= 1
 
     # Fundo
-
     tela.fill(BRANCO)
 
-    # Painel lateral
-
-    pygame.draw.rect(
+    # Linha fina
+    desenhar_linha_fina(
         tela,
-        CINZA,
-        (0, 0, LARGURA_MENU, ALTURA)
+        100,
+        200,
+        900,
+        200
     )
 
-    # Títulos
-
-    titulo(
+    # Linha grossa
+    desenhar_linha_grossa(
         tela,
-        "CONTROLO",
-        70,
-        40
+        100,
+        400,
+        900,
+        400,
     )
 
-    # Botões
-
-    botao(
+    # Interface
+    desenhar_texto(
         tela,
-        botao_azul,
-        AZUL,
-        "Azul"
+        "Linha fina",
+        100,
+        160
     )
 
-    botao(
+    desenhar_texto(
         tela,
-        botao_vermelho,
-        VERMELHO,
-        "Vermelho"
-    )
-
-    botao(
-        tela,
-        botao_verde,
-        VERDE,
-        "Verde"
-    )
-
-    # Informações
-
-    texto(
-        tela,
-        f"Espessura: {espessura}",
-        40,
-        400
-    )
-
-    texto(
-        tela,
-        "SETA CIMA = +",
-        40,
-        450
-    )
-
-    texto(
-        tela,
-        "SETA BAIXO = -",
-        40,
-        490
+        f"Linha grossa - Espessura: {espessura}",
+        100,
+        350
     )
 
     # desenhar_texto(
