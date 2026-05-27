@@ -6,9 +6,9 @@ const CONFIG = {
     lineThickY: 200,
     lineStartX: 40,
     lineEndX: 460,
-    colorThin: '#0078ff',
-    colorThick: '#0078ff',
-    colorBackground: '#f5f5f5',
+    colorLine: '#ff8c00',           // Laranja
+    colorBackground: '#f8f8f8',
+    colorText: '#1a1a1a',
 };
 
 // ===== Elementos DOM =====
@@ -151,7 +151,7 @@ function desenhar() {
 }
 
 function desenharLinhaFina(x1, y1, x2, y2) {
-    ctx.strokeStyle = CONFIG.colorThin;
+    ctx.strokeStyle = CONFIG.colorLine;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(x1, y1);
@@ -164,7 +164,7 @@ function desenharLinhaGrossa(x1, y1, x2, y2, espessura) {
     for (let i = 0; i < espessura; i++) {
         const offset = i - (espessura - 1) / 2; // Centralizar em relação à posição original
 
-        ctx.strokeStyle = CONFIG.colorThick;
+        ctx.strokeStyle = CONFIG.colorLine;
         ctx.lineWidth = 1;
         ctx.beginPath();
         ctx.moveTo(x1, y1 + offset);
@@ -174,7 +174,7 @@ function desenharLinhaGrossa(x1, y1, x2, y2, espessura) {
 }
 
 function desenharTexto(texto, x, y) {
-    ctx.fillStyle = '#212121';
+    ctx.fillStyle = CONFIG.colorText;
     ctx.font = 'bold 14px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';

@@ -281,7 +281,7 @@ main {
     content: "▸";
     position: absolute;
     left: 0;
-    color: var(--color-primary);
+    color: var(--color-orange);
     font-weight: bold;
 }
 
