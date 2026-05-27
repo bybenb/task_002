@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulador de Espessura de Linhas - Versão Web Mobile">
+    <meta name="theme-color" content="#0078ff">
+    <title>Simulador de Espessura de Linhas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulador de Espessura de Linhas</h1>
+            <p class="subtitle">Visualize como múltiplas linhas paralelas simulam espessura</p>
+        </header>
+
+        <main>
+            <!-- Canvas para desenho -->
+            <div class="canvas-wrapper">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <!-- Informações -->
+            <section class="info-section">
+                <div class="info-card">
+                    <span class="label">Espessura Atual:</span>
+                    <span class="value" id="espessura-valor">1</span>
+                </div>
+            </section>
+
+            <!-- Controles -->
+            <section class="controls">
+                <button class="btn btn-decrease" id="btn-diminuir" aria-label="Diminuir espessura">
+                    <span class="icon">−</span>
+                    <span class="text">Diminuir</span>
+                </button>
+
+                <input type="range" id="slider-espessura" min="1" max="50" value="1" class="slider" aria-label="Controle deslizante de espessura">
+
+                <button class="btn btn-increase" id="btn-aumentar" aria-label="Aumentar espessura">
+                    <span class="icon">+</span>
+                    <span class="text">Aumentar</span>
+                </button>
+            </section>
+
+            <!-- Instruções -->
+            <section class="instructions">
+                <h2>Como Usar</h2>
+                <ul>
+                    <li>Use os botões <strong>+ / −</strong> para controlar a espessura</li>
+                    <li>Use o <strong>controle deslizante</strong> para ajuste fino</li>
+                    <li>Observe como a linha grossa é composta por múltiplas linhas paralelas</li>
+                </ul>
+            </section>
+
+            <!-- Botão Reset -->
+            <button class="btn btn-reset" id="btn-reset">
+                Resetar
+            </button>
+        </main>
+
+        <footer>
+            <p>Projeto de Visualização Gráfica - Espessura de Linhas com Múltiplas Linhas Paralelas</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

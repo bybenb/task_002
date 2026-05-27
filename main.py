@@ -19,6 +19,10 @@ clock = pygame.time.Clock()
 # Espessura inicial
 espessura = 1
 
+# Criar botões
+botao_aumentar = Botao(100, 550, 120, 50, "➕ Aumentar", VERDE, PRETO)
+botao_diminuir = Botao(250, 550, 120, 50, "➖ Diminuir", VERMELHO, PRETO)
+
 while True:
 
     # Eventos
@@ -40,6 +44,16 @@ while True:
 
                 if espessura > 1:
                     espessura -= 1
+
+        # Mouse - Clique nos botões
+        if evento.type == pygame.MOUSEBUTTONDOWN:
+            if evento.button == 1:  # Botão esquerdo do mouse
+                if botao_aumentar.clique_em_cima(evento.pos):
+                    espessura += 1
+
+                elif botao_diminuir.clique_em_cima(evento.pos):
+                    if espessura > 1:
+                        espessura -= 1
 
     # Fundo
     tela.fill(BRANCO)
@@ -78,19 +92,30 @@ while True:
         350
     )
 
-    desenhar_texto(
-        tela,
-        "SETA CIMA = aumentar",
-        650,
-        50
-    )
+    # desenhar_texto(
+    #     tela,
+    #     "SETA CIMA = aumentar",
+    #     650,
+    #     50
+    # )
+
+    # desenhar_texto(
+    #     tela,
+    #     "SETA BAIXO = diminuir",
+    #     650,
+    #     90
+    # )
 
     desenhar_texto(
         tela,
-        "SETA BAIXO = diminuir",
+        "ou clique nos botões abaixo:",
         650,
-        90
+        130
     )
+
+    # Desenhar botões
+    botao_aumentar.desenhar(tela)
+    botao_diminuir.desenhar(tela)
 
     pygame.display.update()
 
