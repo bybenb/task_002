@@ -9,12 +9,7 @@ fonte_botao = pygame.font.SysFont("Arial", 18, bold=True)
 
 
 def desenhar_texto(tela, texto, x, y):
-
-    superficie = fonte.render(
-        texto,
-        True,
-        PRETO
-    )
+    superficie = fonte.render( texto, True, PRETO )
 
     tela.blit(superficie, (x, y))
 
@@ -28,13 +23,12 @@ class Botao:
         self.clicado = False
 
     def desenhar(self, tela):
-        # Desenha o botão
         pygame.draw.rect(tela, self.cor_fundo, self.rect)
         pygame.draw.rect(tela, PRETO, self.rect, 2)  # Borda
 
-        # Desenha o texto
-        superficie = fonte_botao.render(self.texto, True, self.cor_texto)
-        texto_rect = superficie.get_rect(center=self.rect.center)
+        
+        superficie = fonte_botao.render(self.texto, True, self.cor_texto)  
+        texto_rect = superficie.get_rect(center=self.rect.center)   # a o texto
         tela.blit(superficie, texto_rect)
 
     def clique_em_cima(self, pos):

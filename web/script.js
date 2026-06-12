@@ -11,6 +11,8 @@ const CONFIG = {
     colorText: '#1a1a1a',
 };
 
+
+
 // ===== Elementos DOM =====
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
