@@ -21,3 +21,5 @@ def desenhar_linha_grossa(tela, x1, y1, x2, y2, espessura):
             (x2, y2 + i),
             1
         )
+
+    

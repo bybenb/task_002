@@ -1,6 +1,7 @@
 import pygame
-import sys
 
+
+from  sys import exit
 from config import *
 from renderer import *
 from interface import *
@@ -28,7 +29,7 @@ while True:
 
         if evento.type == pygame.QUIT:
             pygame.quit()
-            sys.exit()
+            exit()
 
         if evento.type == pygame.KEYDOWN:
 
@@ -40,13 +41,16 @@ while True:
             if evento.key == pygame.K_DOWN:
 
                 if espessura > 1:
-                    espessura -= 1
+                    espessura -= 2
 
         # Mouse - Clique nos botões
         if evento.type == pygame.MOUSEBUTTONDOWN:
             if evento.button == 1:  # Botão esquerdo do mouse
                 if botao_aumentar.clique_em_cima(evento.pos):
-                    espessura += 1
+                    if espessura > 49:
+                        pass
+                    else:
+                        espessura += 1
 
                 elif botao_diminuir.clique_em_cima(evento.pos):
                     if espessura > 1:
